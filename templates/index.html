@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mosaic Image Generator</title>
+    <link rel="stylesheet" href="/static/style.css">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Mosaic Image Generator</h1>
+        <div class="upload-section">
+            <form id="uploadForm" enctype="multipart/form-data">
+                <input type="file" id="imageUpload" name="image" accept="image/*">
+                <button type="submit" id="generateMosaic">Generate Mosaic</button>
+            </form>
+        </div>
+        <div id="mosaicContainer">Your mosaic image will appear here</div>
+    </div>
+    <script>
+        document.getElementById("uploadForm").addEventListener("submit", async function (event) {
+            event.preventDefault();
+            const fileInput = document.getElementById("imageUpload");
+            const file = fileInput.files[0];
+
+            if (!file) {
+                alert("Please select an image to upload.");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("image", file);
+
+            try {
+                const response = await fetch("/upload_image", {
+                    method: "POST",
+                    body: formData
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    document.getElementById("mosaicContainer").innerHTML = `
+                        <img src="${result.mosaic_url}" alt="Generated Mosaic" style="max-width: 100%; border-radius: 10px;">
+                    `;
+                } else {
+                    alert("Failed to generate mosaic.");
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("An error occurred while uploading the image.");
+            }
+        });
+    </script>
+</body>
+</html>

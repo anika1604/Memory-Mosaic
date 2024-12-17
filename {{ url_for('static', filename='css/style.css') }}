@@ -1,0 +1,95 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: url('https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3YxMDc3LWJnLTAwNC5qcGc.jpg') no-repeat center center fixed;
+        background-size: cover; /* or use contain or specific sizes as needed */
+        background-position: center;
+
+}
+
+/* Container styling */
+.container {
+    background-color:#FFDAB9; /* Peach shade */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+}
+
+/* Header styling */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #16163b; /* Darker peach for the header */
+}
+
+/* Upload section styling */
+.upload-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Input file styling */
+#imageUpload {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+/* Button styling */
+#generateMosaic {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #16163b; /* Darker peach for the button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#generateMosaic:hover {
+    background-color: #16163b; /* Even darker peach on hover */
+}
+
+/* Mosaic container styling */
+#mosaicContainer {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #fff; /* White background for mosaic display */
+    border-radius: 10px;
+    border: 1px dashed #ccc;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    font-style: italic;
+}
+
+/* Responsive styling */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    #generateMosaic {
+        width: 100%;
+    }
+}
